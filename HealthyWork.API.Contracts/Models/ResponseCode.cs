@@ -244,7 +244,14 @@ namespace HealthyWork.API.Contracts.Models
         #endregion
         #endregion
         #region Exception Codes (500>)
-
+        [Description("Exception thrown in Create Method of *place*")]
+        Exception_Create = 510,
+        [Description("Exception thrown in Read Method of *place*")]
+        Exception_Read = 511,
+        [Description("Exception thrown in Update Method of *place*")]
+        Exception_Update = 512,
+        [Description("Exception thrown in Delete Method of *place*")]
+        Exception_Delete = 513
         #endregion
     }
 
@@ -265,6 +272,21 @@ namespace HealthyWork.API.Contracts.Models
                 }
             }
             return response.ToString();
+        }
+
+        public static string GetDescription(this ResponseCode response, string place)
+        {
+            Type genericEnumType = response.GetType();
+            MemberInfo[] memberInfo = genericEnumType.GetMember(response.ToString());
+            if ((memberInfo != null && memberInfo.Length > 0))
+            {
+                var _Attribs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                if ((_Attribs != null && _Attribs.Count() > 0))
+                {
+                    return ((DescriptionAttribute)_Attribs.ElementAt(0)).Description;
+                }
+            }
+            return response.ToString().Replace("*place*",place);
         }
 
     }

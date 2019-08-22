@@ -12,10 +12,7 @@ namespace HealthyWork.API.Contracts
         public DbSet<HeadQuarters> HeadQuarters { get; set; }
         public DbSet<TelegramPush> TelegramPushes { get; set; }
 
-        public HealthyDbContext()
-        {
-
-        }
+        public HealthyDbContext(){}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
