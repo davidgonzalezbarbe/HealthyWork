@@ -4347,6 +4347,19 @@
         "runtime": {
           "bin/placeholder/HealthyWork.API.Contracts.dll": {}
         }
+      },
+      "HealthyWork.API.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "HealthyWork.API.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HealthyWork.API.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HealthyWork.API.Services.dll": {}
+        }
       }
     }
   },
@@ -11808,11 +11821,17 @@
       "type": "project",
       "path": "../HealthyWork.API.Contracts/HealthyWork.API.Contracts.csproj",
       "msbuildProject": "../HealthyWork.API.Contracts/HealthyWork.API.Contracts.csproj"
+    },
+    "HealthyWork.API.Services/1.0.0": {
+      "type": "project",
+      "path": "../HealthyWork.API.Services/HealthyWork.API.Services.csproj",
+      "msbuildProject": "../HealthyWork.API.Services/HealthyWork.API.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "HealthyWork.API.Contracts >= 1.0.0",
+      "HealthyWork.API.Services >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.EntityFrameworkCore >= 2.1.4",
@@ -11853,6 +11872,9 @@
           "projectReferences": {
             "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj": {
               "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj"
+            },
+            "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj": {
+              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj"
             }
           }
         }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HealthyWork.API.Services.Services
 {
-    public class ValueService: BaseService<Value>
+    public class ValueService: BaseService<Value>, IService<Value>
     {
         private readonly HealthyDbContext dbContext;
 
@@ -19,18 +19,18 @@ namespace HealthyWork.API.Services.Services
             this.dbContext = dbContext;
         }
 
-        public async Task<ResultData<Value>> CreateAsync(Value model) => await Create(model);
+       public async Task<ResultData<Value>> Create(Value model) => await CreateAsync(model);
 
 
-        public async Task<ResultData<Value>> DeleteAsync(Guid modelId) => await Delete(modelId);
+        public async Task<ResultData<Value>> Delete(Guid modelId) => await DeleteAsync(modelId);
 
 
-        public async Task<ResultData<Value>> ReadAsync(Guid modelId) => await Read(modelId);
+        public async Task<ResultData<Value>> Read(Guid modelId) => await ReadAsync(modelId);
 
 
-        public async Task<ResultData<List<Value>>> ReadAllAsync() => await ReadAll();
+        public async Task<ResultData<List<Value>>> ReadAll() => await ReadAllAsync();
 
-        public async Task<ResultData<Value>> UpdateAsync(Value model) => await Update(model, model.Id);
+        public async Task<ResultData<Value>> Update(Value model) => await UpdateAsync(model, model.Id);
        
     }
 }

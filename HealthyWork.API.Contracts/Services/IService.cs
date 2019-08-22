@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthyWork.API.Contracts.Services
 {
-    public interface IService<T> where T: class
+    public interface IService<T> where T : class
     {
         Task<ResultData<T>> Create(T model);
 
@@ -14,10 +14,10 @@ namespace HealthyWork.API.Contracts.Services
 
         Task<ResultData<List<T>>> ReadAll();
 
-        Task<ResultData<T>> Update(T model, Guid id);
+        Task<ResultData<T>> Update(T model);
 
         Task<ResultData<T>> Delete(Guid modelId);
 
-
     }
+
 }

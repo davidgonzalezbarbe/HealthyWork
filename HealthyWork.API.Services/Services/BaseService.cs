@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HealthyWork.API.Services.Services
 {
-    public class BaseService<T> : IService<T> where T : class
+    public class BaseService<T> where T : class
     {
         private readonly HealthyDbContext dbContext;
 
@@ -18,7 +18,7 @@ namespace HealthyWork.API.Services.Services
             this.dbContext = dbContext;
         }
 
-        public async Task<ResultData<T>> Create(T model)
+        protected async Task<ResultData<T>> CreateAsync(T model)
         {
             ResultData<T> result = new ResultData<T>() { Content = null };
 
@@ -36,7 +36,7 @@ namespace HealthyWork.API.Services.Services
             return result;
         }
 
-        public async Task<ResultData<T>> Delete(Guid modelId)
+        protected async Task<ResultData<T>> DeleteAsync(Guid modelId)
         {
             ResultData<T> result = new ResultData<T>() { Content = null };
 
@@ -61,7 +61,7 @@ namespace HealthyWork.API.Services.Services
             return result;
         }
 
-        public async Task<ResultData<T>> Read(Guid modelId)
+        protected async Task<ResultData<T>> ReadAsync(Guid modelId)
         {
             ResultData<T> result = new ResultData<T>() { Content = null };
 
@@ -82,7 +82,7 @@ namespace HealthyWork.API.Services.Services
             return result;
         }
 
-        public async Task<ResultData<List<T>>> ReadAll()
+        protected async Task<ResultData<List<T>>> ReadAllAsync()
         {
             ResultData<List<T>> result = new ResultData<List<T>>() { Content = null };
 
@@ -102,7 +102,7 @@ namespace HealthyWork.API.Services.Services
             }
             return result;
         }
-        public async Task<ResultData<T>> Update(T model, Guid id)
+        protected async Task<ResultData<T>> UpdateAsync(T model, Guid id)
         {
             ResultData<T> result = new ResultData<T>() { Content = null };
 

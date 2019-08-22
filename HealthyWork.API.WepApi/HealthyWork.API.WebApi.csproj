@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthyWork.API.Contracts\HealthyWork.API.Contracts.csproj" />
+    <ProjectReference Include="..\HealthyWork.API.Services\HealthyWork.API.Services.csproj" />
   </ItemGroup>
 
 </Project>

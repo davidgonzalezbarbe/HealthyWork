@@ -1,12 +1,13 @@
 ﻿using HealthyWork.API.Contracts;
 using HealthyWork.API.Contracts.Models;
+using HealthyWork.API.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HealthyWork.API.Services.Services
 {
-    public class ConfigurationService : BaseService<Configuration>
+    public class ConfigurationService : BaseService<Configuration>, IService<Configuration>
     {
         private readonly HealthyDbContext dbContext;
 
@@ -15,17 +16,17 @@ namespace HealthyWork.API.Services.Services
             this.dbContext = dbContext;
         }
 
-        public async Task<ResultData<Configuration>> CreateAsync(Configuration model) => await Create(model);
+        public async Task<ResultData<Configuration>> Create(Configuration model) => await CreateAsync(model);
 
 
-        public async Task<ResultData<Configuration>> DeleteAsync(Guid modelId) => await Delete(modelId);
+        public async Task<ResultData<Configuration>> Delete(Guid modelId) => await DeleteAsync(modelId);
 
 
-        public async Task<ResultData<Configuration>> ReadAsync(Guid modelId) => await Read(modelId);
+        public async Task<ResultData<Configuration>> Read(Guid modelId) => await ReadAsync(modelId);
 
 
-        public async Task<ResultData<List<Configuration>>> ReadAllAsync() => await ReadAll();
+        public async Task<ResultData<List<Configuration>>> ReadAll() => await ReadAllAsync();
 
-        public async Task<ResultData<Configuration>> UpdateAsync(Configuration model) => await Update(model, model.Id);
+        public async Task<ResultData<Configuration>> Update(Configuration model) => await UpdateAsync(model, model.Id);
     }
 }
