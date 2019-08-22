@@ -781,11 +781,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\HealthyWork.APP_MOBILE.Xamarin App.Android.csproj",
+      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\HealthyWork.APP_MOBILE.Xamarin App.Android.csproj",
       "projectName": "HealthyWork.APP_MOBILE.Xamarin App.Android",
-      "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\HealthyWork.APP_MOBILE.Xamarin App.Android.csproj",
+      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\HealthyWork.APP_MOBILE.Xamarin App.Android.csproj",
       "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\obj\\",
+      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

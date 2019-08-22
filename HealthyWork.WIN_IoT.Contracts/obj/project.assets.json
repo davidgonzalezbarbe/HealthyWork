@@ -27972,11 +27972,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj",
+      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj",
       "projectName": "HealthyWork.WIN_IoT.Contracts",
-      "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj",
+      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj",
       "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\obj\\",
+      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

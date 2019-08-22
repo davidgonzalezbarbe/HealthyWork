@@ -28082,11 +28082,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\HealthyWork.WIN_IoT.Services.csproj",
+      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\HealthyWork.WIN_IoT.Services.csproj",
       "projectName": "HealthyWork.WIN_IoT.Services",
-      "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\HealthyWork.WIN_IoT.Services.csproj",
+      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\HealthyWork.WIN_IoT.Services.csproj",
       "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\obj\\",
+      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Services\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -28108,8 +28108,8 @@
       "frameworks": {
         "uap10.0.15063": {
           "projectReferences": {
-            "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj": {
-              "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj"
+            "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj": {
+              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.WIN_IoT.Contracts\\HealthyWork.WIN_IoT.Contracts.csproj"
             }
           }
         }

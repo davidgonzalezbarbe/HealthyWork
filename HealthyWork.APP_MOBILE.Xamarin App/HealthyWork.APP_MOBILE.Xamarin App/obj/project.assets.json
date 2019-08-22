@@ -364,11 +364,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.csproj",
+      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.csproj",
       "projectName": "HealthyWork.APP_MOBILE.Xamarin App",
-      "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.csproj",
+      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.csproj",
       "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\obj\\",
+      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -389,8 +389,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
-              "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
+            "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
+              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
             }
           }
         }

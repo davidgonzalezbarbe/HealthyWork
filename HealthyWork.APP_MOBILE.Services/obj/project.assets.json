@@ -200,11 +200,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj",
+      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj",
       "projectName": "HealthyWork.APP_MOBILE.Services",
-      "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj",
+      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj",
       "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\obj\\",
+      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -225,8 +225,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
-              "projectPath": "C:\\Users\\dgonzalez.gomez\\source\\repos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
+            "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
+              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
             }
           }
         }
