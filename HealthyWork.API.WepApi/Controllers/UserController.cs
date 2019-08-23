@@ -11,63 +11,60 @@ namespace HealthyWork.API.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValueController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IService<Value> valueService;
+        private readonly IService<User> userService;
 
-        public ValueController(IService<Value> valueService)
+        public UserController(IService<User> userService)
         {
-            this.valueService = valueService;
+            this.userService = userService;
         }
-
-        // GET: api/Value
+        // GET: api/User
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var values = await valueService.ReadAll();
+            var users = await userService.ReadAll();
 
-            if (values.HasErrors) return BadRequest(values.Results);
-            else return Ok(values.Content);
-
+            if (users.HasErrors) return BadRequest(users.Results);
+            else return Ok(users.Content);
         }
 
-        // GET: api/Value/5
+        // GET: api/User/5
         [HttpGet("{id}", Name = "Get")]
         public async Task<IActionResult> Get(Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Read(id);
+            var user = await userService.Read(id);
 
-            if (value.HasErrors) return NotFound(value.Results);
-            else return Ok(value.Content);
+            if (user.HasErrors) return NotFound(user.Results);
+            else return Ok(user.Content);
         }
 
-        // POST: api/Value
+        // POST: api/User
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Value model)
+        public async Task<IActionResult> Post([FromBody] User value)
         {
             if (ModelState.IsValid)
             {
-                if (model.Id != Guid.Empty) model.Id = Guid.Empty;
-                var created = await valueService.Create(model);
+                if (value.Id != Guid.Empty) value.Id = Guid.Empty;
 
-                if (created.HasErrors) return BadRequest(created.Results);
-                else return CreatedAtAction(nameof(Get), model.Id);
+                var result = await userService.Create(value);
+
+                if (result.HasErrors) return BadRequest(result.Results);
+                else return CreatedAtAction(nameof(Get), value.Id);
             }
             else return BadRequest();
         }
 
-       
-
-        // PUT: api/Value/5
+        // PUT: api/User/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] Value model)
+        public async Task<IActionResult> Put(Guid id, [FromBody] User value)
         {
             if (ModelState.IsValid)
             {
-                if (model.Id != id || id == Guid.Empty) return NotFound();
-                var updated = await valueService.Update(model);
+                if (value.Id != id || id == Guid.Empty) return NotFound();
+                var updated = await userService.Update(value);
 
                 if (updated.HasErrors) return BadRequest(updated.Results);
                 else return Ok(updated.Content);
@@ -81,7 +78,7 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Delete(id);
+            var value = await userService.Delete(id);
 
             if (value.HasErrors) return BadRequest(value.Results);
             else return Ok(value.Content);

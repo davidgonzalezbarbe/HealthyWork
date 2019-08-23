@@ -32,5 +32,6 @@ namespace HealthyWork.API.Services.Services
 
         public async Task<ResultData<Value>> Update(Value model) => await UpdateAsync(model, model.Id);
        
+
     }
 }

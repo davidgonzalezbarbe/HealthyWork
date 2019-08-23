@@ -16,6 +16,13 @@ namespace HealthyWork.API.Contracts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Room>().ToTable("Room");
+            modelBuilder.Entity<Value>().ToTable("Value");
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<HeadQuarters>().ToTable("HeadQuarters");
+            modelBuilder.Entity<TelegramPush>().ToTable("TelegramPush");
+            modelBuilder.Entity<Configuration>().ToTable("Configuration");
+
             modelBuilder.Entity<Room>().HasOne(x => x.HeadQuarters).WithMany(x => x.Rooms).HasForeignKey(x => x.HeadQuartersId);
             modelBuilder.Entity<Value>().HasOne(x => x.Room).WithMany(x => x.Values).HasForeignKey(x => x.RoomId);
             modelBuilder.Entity<User>().HasOne(x => x.Room).WithMany(x => x.Users).HasForeignKey(x => x.RoomId);

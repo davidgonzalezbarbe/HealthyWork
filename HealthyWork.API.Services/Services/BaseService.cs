@@ -4,6 +4,7 @@ using HealthyWork.API.Contracts.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -24,9 +25,10 @@ namespace HealthyWork.API.Services.Services
 
             try
             {
+                typeof(T).GetProperty("Id").SetValue(model, Guid.NewGuid());
                 var res = dbContext.Set<T>().Add(model);
                 await dbContext.SaveChangesAsync();
-                result.AddResult(GetResponseCode(nameof(T) + "_Created").GetCode(), GetResponseCode(nameof(T) + "_Created").GetDescription(), ResultType.Success);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_Created").GetCode(), GetResponseCode(typeof(T).Name + "_Created").GetDescription(), ResultType.Success);
                 result.Content = res.Entity;
             }
             catch (Exception)
@@ -47,12 +49,12 @@ namespace HealthyWork.API.Services.Services
                 var res = dbContext.Set<T>().Remove(model);
                 await dbContext.SaveChangesAsync();
 
-                result.AddResult(GetResponseCode(nameof(T) + "_Deleted").GetCode(), GetResponseCode(nameof(T) + "_Deleted").GetDescription(), ResultType.Success);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_Deleted").GetCode(), GetResponseCode(typeof(T).Name + "_Deleted").GetDescription(), ResultType.Success);
                 result.Content = res.Entity;
             }
             catch (NullReferenceException)
             {
-                result.AddResult(GetResponseCode(nameof(T) + "_NotDeleted").GetCode(), GetResponseCode(nameof(T) + "_NotDeleted").GetDescription(), ResultType.Error);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_NotDeleted").GetCode(), GetResponseCode(typeof(T).Name + "_NotDeleted").GetDescription(), ResultType.Error);
             }
             catch (Exception)
             {
@@ -69,11 +71,11 @@ namespace HealthyWork.API.Services.Services
             {
                 var model = await dbContext.Set<T>().FindAsync(modelId);
                 result.Content = model ?? throw new NullReferenceException();
-                result.AddResult(GetResponseCode(nameof(T) + "_Found").GetCode(), GetResponseCode(nameof(T) + "_Found").GetDescription(), ResultType.Success);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_Found").GetCode(), GetResponseCode(typeof(T).Name + "_Found").GetDescription(), ResultType.Success);
             }
             catch (NullReferenceException)
             {
-                result.AddResult(GetResponseCode(nameof(T) + "_NotFound").GetCode(), GetResponseCode(nameof(T) + "_NotFound").GetDescription(), ResultType.Error);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_NotFound").GetCode(), GetResponseCode(typeof(T).Name + "_NotFound").GetDescription(), ResultType.Error);
             }
             catch (Exception)
             {
@@ -90,11 +92,11 @@ namespace HealthyWork.API.Services.Services
             {
                 var model = await dbContext.Set<T>().ToListAsync();
                 result.Content = model ?? throw new NullReferenceException();
-                result.AddResult(GetResponseCode(nameof(T) + "s_Found").GetCode(), GetResponseCode(nameof(T) + "s_Found").GetDescription(), ResultType.Success);
+                result.AddResult(GetResponseCode(typeof(T).Name + "s_Found").GetCode(), GetResponseCode(typeof(T).Name + "s_Found").GetDescription(), ResultType.Success);
             }
             catch (NullReferenceException)
             {
-                result.AddResult(GetResponseCode(nameof(T) + "s_NotFound").GetCode(), GetResponseCode(nameof(T) + "s_NotFound").GetDescription(), ResultType.Error);
+                result.AddResult(GetResponseCode(typeof(T).Name + "s_NotFound").GetCode(), GetResponseCode(typeof(T).Name + "s_NotFound").GetDescription(), ResultType.Error);
             }
             catch (Exception)
             {
@@ -112,16 +114,46 @@ namespace HealthyWork.API.Services.Services
                 if (found == null) throw new NullReferenceException();
                 dbContext.Entry(found).State = EntityState.Detached;
                 var res = dbContext.Set<T>().Update(model);
-                result.AddResult(GetResponseCode(nameof(T) + "_Updated").GetCode(), GetResponseCode(nameof(T) + "_Updated").GetDescription(), ResultType.Success);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_Updated").GetCode(), GetResponseCode(typeof(T).Name + "_Updated").GetDescription(), ResultType.Success);
                 result.Content = res.Entity;
             }
             catch (NullReferenceException)
             {
-                result.AddResult(GetResponseCode(nameof(T) + "_NotUpdated").GetCode(), GetResponseCode(nameof(T) + "_NotUpdated").GetDescription(), ResultType.Error);
+                result.AddResult(GetResponseCode(typeof(T).Name + "_NotUpdated").GetCode(), GetResponseCode(typeof(T).Name + "_NotUpdated").GetDescription(), ResultType.Error);
             }
             catch (Exception)
             {
                 result.AddResult(ResponseCode.Exception_Update.GetCode(), ResponseCode.Exception_Update.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+            }
+            return result;
+        }
+
+        public async Task<ResultData<List<T>>> ReadFiltered(T model, bool restricted)
+        {
+            ResultData<List<T>> result = new ResultData<List<T>>() { Content = null };
+
+            try
+            {
+                List<PropertyInfo> notNullValues = new List<PropertyInfo>();
+
+                foreach (var prop in typeof(T).GetProperties())
+                {
+                    if (prop.GetValue(model) != null) notNullValues.Add(prop);
+                }
+
+                string filter = $"select * from {nameof(T)} where ";
+                string operand = restricted ? "and" : "or";
+
+                notNullValues.ForEach(x => filter += string.Concat(x.Name, " = ", x.PropertyType != typeof(int) ? "'" : "", x.GetValue(model), x.PropertyType != typeof(int) ? "' " : " ", operand, " "));
+                filter = filter.Remove(filter.Length - operand.Length + 1);
+
+                result.Content = await dbContext.Set<T>().FromSql(filter).ToListAsync();
+                if (result.Content.Count > 0)result.AddResult(GetResponseCode(typeof(T).Name + "s_Found").GetCode(), GetResponseCode(typeof(T).Name + "s_Found").GetDescription(), ResultType.Success);
+                else result.AddResult(GetResponseCode(typeof(T).Name + "s_NotFound").GetCode(), GetResponseCode(typeof(T).Name + "s_NotFound").GetDescription(), ResultType.Error);
+            }
+            catch (Exception)
+            {
+                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
             }
             return result;
         }
