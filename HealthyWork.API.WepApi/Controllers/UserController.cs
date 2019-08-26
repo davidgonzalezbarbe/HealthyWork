@@ -48,12 +48,11 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Id == Guid.Empty) return BadRequest();
+                
+                var users = await userService.ReadFiltered(model, restricted);
 
-                var user = await userService.ReadFiltered(model, restricted);
-
-                if (user.HasErrors) return NotFound(user.Results);
-                else return Ok(user.Content);
+                if (users.HasErrors) return NotFound(users.Results);
+                else return Ok(users.Content);
             }
             else return BadRequest();
         }

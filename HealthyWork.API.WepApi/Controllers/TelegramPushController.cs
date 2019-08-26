@@ -11,61 +11,61 @@ namespace HealthyWork.API.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValueController : ControllerBase
+    public class TelegramPushController : ControllerBase
     {
-        private readonly IService<Value> valueService;
+        private readonly IService<TelegramPush> telegramPushService;
 
-        public ValueController(IService<Value> valueService)
+        public TelegramPushController(IService<TelegramPush> telegramPushService)
         {
-            this.valueService = valueService;
+            this.telegramPushService = telegramPushService;
         }
 
-        // GET: api/Value
+        // GET: api/TelegramPush
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var values = await valueService.ReadAll();
+            var telegramPushs = await telegramPushService.ReadAll();
 
-            if (values.HasErrors) return BadRequest(values.Results);
-            else return Ok(values.Content);
+            if (telegramPushs.HasErrors) return BadRequest(telegramPushs.Results);
+            else return Ok(telegramPushs.Content);
 
         }
 
-        // GET: api/Value/5
+        // GET: api/TelegramPush/5
         [HttpGet()]
         public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Read(id);
+            var telegramPush = await telegramPushService.Read(id);
 
-            if (value.HasErrors) return NotFound(value.Results);
-            else return Ok(value.Content);
+            if (telegramPush.HasErrors) return NotFound(telegramPush.Results);
+            else return Ok(telegramPush.Content);
         }
 
-        // GET: api/Value/Search
+        // GET: api/TelegramPush/Search
         [HttpGet()]
         [Route("Search")]
-        public async Task<IActionResult> Get([FromBody] Value model, [FromQuery]bool restricted = true)
+        public async Task<IActionResult> Get([FromBody] TelegramPush model, [FromQuery]bool restricted = true)
         {
             if (ModelState.IsValid)
             {
-                var values = await valueService.ReadFiltered(model, restricted);
+                var telegramPushs = await telegramPushService.ReadFiltered(model, restricted);
 
-                if (values.HasErrors) return NotFound(values.Results);
-                else return Ok(values.Content);
+                if (telegramPushs.HasErrors) return NotFound(telegramPushs.Results);
+                else return Ok(telegramPushs.Content);
             }
             else return BadRequest();
         }
 
-        // POST: api/Value
+        // POST: api/TelegramPush
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Value model)
+        public async Task<IActionResult> Post([FromBody] TelegramPush model)
         {
             if (ModelState.IsValid)
             {
                 if (model.Id != Guid.Empty) model.Id = Guid.Empty;
-                var created = await valueService.Create(model);
+                var created = await telegramPushService.Create(model);
 
                 if (created.HasErrors) return BadRequest(created.Results);
                 else return CreatedAtAction(nameof(Get), model);
@@ -73,16 +73,16 @@ namespace HealthyWork.API.WebApi.Controllers
             else return BadRequest();
         }
 
-       
 
-        // PUT: api/Value/5
+
+        // PUT: api/TelegramPush/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] Value model)
+        public async Task<IActionResult> Put(Guid id, [FromBody] TelegramPush model)
         {
             if (ModelState.IsValid)
             {
                 if (model.Id != id || id == Guid.Empty) return NotFound();
-                var updated = await valueService.Update(model);
+                var updated = await telegramPushService.Update(model);
 
                 if (updated.HasErrors) return BadRequest(updated.Results);
                 else return Ok(updated.Content);
@@ -96,10 +96,10 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Delete(id);
+            var telegramPush = await telegramPushService.Delete(id);
 
-            if (value.HasErrors) return BadRequest(value.Results);
-            else return Ok(value.Content);
+            if (telegramPush.HasErrors) return BadRequest(telegramPush.Results);
+            else return Ok(telegramPush.Content);
         }
     }
 }

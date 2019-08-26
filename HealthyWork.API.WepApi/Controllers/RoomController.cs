@@ -11,61 +11,61 @@ namespace HealthyWork.API.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValueController : ControllerBase
+    public class RoomController : ControllerBase
     {
-        private readonly IService<Value> valueService;
+        private readonly IService<Room> roomService;
 
-        public ValueController(IService<Value> valueService)
+        public RoomController(IService<Room> roomService)
         {
-            this.valueService = valueService;
+            this.roomService = roomService;
         }
 
-        // GET: api/Value
+        // GET: api/Room
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var values = await valueService.ReadAll();
+            var rooms = await roomService.ReadAll();
 
-            if (values.HasErrors) return BadRequest(values.Results);
-            else return Ok(values.Content);
+            if (rooms.HasErrors) return BadRequest(rooms.Results);
+            else return Ok(rooms.Content);
 
         }
 
-        // GET: api/Value/5
+        // GET: api/Room/5
         [HttpGet()]
         public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Read(id);
+            var room = await roomService.Read(id);
 
-            if (value.HasErrors) return NotFound(value.Results);
-            else return Ok(value.Content);
+            if (room.HasErrors) return NotFound(room.Results);
+            else return Ok(room.Content);
         }
 
-        // GET: api/Value/Search
+        // GET: api/Room/Search
         [HttpGet()]
         [Route("Search")]
-        public async Task<IActionResult> Get([FromBody] Value model, [FromQuery]bool restricted = true)
+        public async Task<IActionResult> Get([FromBody] Room model, [FromQuery]bool restricted = true)
         {
             if (ModelState.IsValid)
             {
-                var values = await valueService.ReadFiltered(model, restricted);
+                var rooms = await roomService.ReadFiltered(model, restricted);
 
-                if (values.HasErrors) return NotFound(values.Results);
-                else return Ok(values.Content);
+                if (rooms.HasErrors) return NotFound(rooms.Results);
+                else return Ok(rooms.Content);
             }
             else return BadRequest();
         }
 
-        // POST: api/Value
+        // POST: api/Room
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Value model)
+        public async Task<IActionResult> Post([FromBody] Room model)
         {
             if (ModelState.IsValid)
             {
                 if (model.Id != Guid.Empty) model.Id = Guid.Empty;
-                var created = await valueService.Create(model);
+                var created = await roomService.Create(model);
 
                 if (created.HasErrors) return BadRequest(created.Results);
                 else return CreatedAtAction(nameof(Get), model);
@@ -73,16 +73,16 @@ namespace HealthyWork.API.WebApi.Controllers
             else return BadRequest();
         }
 
-       
 
-        // PUT: api/Value/5
+
+        // PUT: api/Room/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] Value model)
+        public async Task<IActionResult> Put(Guid id, [FromBody] Room model)
         {
             if (ModelState.IsValid)
             {
                 if (model.Id != id || id == Guid.Empty) return NotFound();
-                var updated = await valueService.Update(model);
+                var updated = await roomService.Update(model);
 
                 if (updated.HasErrors) return BadRequest(updated.Results);
                 else return Ok(updated.Content);
@@ -96,10 +96,10 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await valueService.Delete(id);
+            var room = await roomService.Delete(id);
 
-            if (value.HasErrors) return BadRequest(value.Results);
-            else return Ok(value.Content);
+            if (room.HasErrors) return BadRequest(room.Results);
+            else return Ok(room.Content);
         }
     }
 }
