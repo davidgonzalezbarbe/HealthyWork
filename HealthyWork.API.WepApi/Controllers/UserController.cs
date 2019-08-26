@@ -30,8 +30,8 @@ namespace HealthyWork.API.WebApi.Controllers
         }
 
         // GET: api/User/5
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> Get(Guid id)
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
@@ -39,6 +39,23 @@ namespace HealthyWork.API.WebApi.Controllers
 
             if (user.HasErrors) return NotFound(user.Results);
             else return Ok(user.Content);
+        }
+        
+        // GET: api/User/Search
+        [Route("search")]
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromBody] User model, [FromQuery]bool restricted = true)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Id == Guid.Empty) return BadRequest();
+
+                var user = await userService.ReadFiltered(model, restricted);
+
+                if (user.HasErrors) return NotFound(user.Results);
+                else return Ok(user.Content);
+            }
+            else return BadRequest();
         }
 
         // POST: api/User

@@ -173,6 +173,7 @@ namespace HealthyWork.API.Services.Services
                     var firstPart = prop.Name.EndsWith("Id") ? prop.Name.Remove(prop.Name.Length - 2) : prop.Name;
                     var hasQuotes = (prop.PropertyType != typeof(int) && prop.PropertyType.BaseType != typeof(Enum)) ? true : false;
                     var secPart = prop.PropertyType.BaseType != typeof(Enum) ? prop.GetValue(model) : (int)prop.GetValue(model);
+                    secPart = prop.PropertyType == typeof(DateTime) ? string.Concat(((DateTime)prop.GetValue(model)).ToString("yyyy-MM-dd")) : secPart;
                     filter += string.Concat(firstPart, " = ", hasQuotes ? "'":"", secPart, hasQuotes ? "' " : " ", operand, " ");
                 }
                 filter = filter.Remove(filter.Length - operand.Length - 1);

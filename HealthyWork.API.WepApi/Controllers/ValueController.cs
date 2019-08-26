@@ -32,8 +32,8 @@ namespace HealthyWork.API.WebApi.Controllers
         }
 
         // GET: api/Value/5
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> Get(Guid id)
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
@@ -41,6 +41,21 @@ namespace HealthyWork.API.WebApi.Controllers
 
             if (value.HasErrors) return NotFound(value.Results);
             else return Ok(value.Content);
+        }
+
+        // GET: api/Value/Search
+        [HttpGet()]
+        [Route("Search")]
+        public async Task<IActionResult> Get([FromBody] Value model, [FromQuery]bool restricted = true)
+        {
+            if (ModelState.IsValid)
+            {
+                var users = await valueService.ReadFiltered(model, restricted);
+
+                if (users.HasErrors) return NotFound(users.Results);
+                else return Ok(users.Content);
+            }
+            else return BadRequest();
         }
 
         // POST: api/Value
@@ -53,7 +68,7 @@ namespace HealthyWork.API.WebApi.Controllers
                 var created = await valueService.Create(model);
 
                 if (created.HasErrors) return BadRequest(created.Results);
-                else return CreatedAtAction(nameof(Get), model.Id);
+                else return CreatedAtAction(nameof(Get), model);
             }
             else return BadRequest();
         }
