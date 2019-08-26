@@ -128,7 +128,7 @@ namespace HealthyWork.API.Services.Services
             return result;
         }
 
-        public async Task<ResultData<List<T>>> ReadFiltered(T model, bool restricted)
+        protected async Task<ResultData<List<T>>> ReadFilteredAsync(T model, bool restricted)
         {
             ResultData<List<T>> result = new ResultData<List<T>>() { Content = null };
 
@@ -138,20 +138,50 @@ namespace HealthyWork.API.Services.Services
 
                 foreach (var prop in typeof(T).GetProperties())
                 {
-                    if (prop.GetValue(model) != null) notNullValues.Add(prop);
+                    if (prop.PropertyType == typeof(Guid))
+                    {
+                        if ((Guid)prop.GetValue(model) != Guid.Empty) notNullValues.Add(prop);
+                    }
+                    else if (prop.PropertyType == typeof(int) || prop.PropertyType.BaseType == typeof(Enum))
+                    {
+                        if ((int)prop.GetValue(model) != 0) notNullValues.Add(prop);
+                    }
+                    else if (prop.PropertyType == typeof(string))
+                    {
+                        if (string.IsNullOrEmpty((string)prop.GetValue(model))) notNullValues.Add(prop);
+                    }
+                    else if (prop.PropertyType == typeof(DateTime))
+                    {
+                        var initial = new DateTime(1, 1, 1, 0, 0, 0);
+                        if ((DateTime)prop.GetValue(model) != initial) notNullValues.Add(prop);
+                    }
+                    else if (prop.PropertyType == typeof(bool))
+                    {
+                        if ((bool)prop.GetValue(model)) notNullValues.Add(prop);
+                    }
+                    else if (prop.PropertyType == typeof(double))
+                    {
+                        if ((double)prop.GetValue(model) != 0) notNullValues.Add(prop);
+                    }
                 }
 
-                string filter = $"select * from {nameof(T)} where ";
+                string filter = $"select * from {typeof(T).Name} where ";
                 string operand = restricted ? "and" : "or";
 
-                notNullValues.ForEach(x => filter += string.Concat(x.Name, " = ", x.PropertyType != typeof(int) ? "'" : "", x.GetValue(model), x.PropertyType != typeof(int) ? "' " : " ", operand, " "));
-                filter = filter.Remove(filter.Length - operand.Length + 1);
+                foreach (var prop in notNullValues)
+                {
+                    var firstPart = prop.Name.EndsWith("Id") ? prop.Name.Remove(prop.Name.Length - 2) : prop.Name;
+                    var hasQuotes = (prop.PropertyType != typeof(int) && prop.PropertyType.BaseType != typeof(Enum)) ? true : false;
+                    var secPart = prop.PropertyType.BaseType != typeof(Enum) ? prop.GetValue(model) : (int)prop.GetValue(model);
+                    filter += string.Concat(firstPart, " = ", hasQuotes ? "'":"", secPart, hasQuotes ? "' " : " ", operand, " ");
+                }
+                filter = filter.Remove(filter.Length - operand.Length - 1);
 
                 result.Content = await dbContext.Set<T>().FromSql(filter).ToListAsync();
                 if (result.Content.Count > 0)result.AddResult(GetResponseCode(typeof(T).Name + "s_Found").GetCode(), GetResponseCode(typeof(T).Name + "s_Found").GetDescription(), ResultType.Success);
                 else result.AddResult(GetResponseCode(typeof(T).Name + "s_NotFound").GetCode(), GetResponseCode(typeof(T).Name + "s_NotFound").GetDescription(), ResultType.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
             }

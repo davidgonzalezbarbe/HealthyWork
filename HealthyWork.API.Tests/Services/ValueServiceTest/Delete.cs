@@ -25,7 +25,7 @@ namespace HealthyWork.API.Tests.Services.ValueServiceTest
 
         [TestMethod]
         public async Task Delete_Ok()
-        {//TODO: Revisar
+        {
             #region Arrange
             var hq = await dbContext.HeadQuarters.AddAsync(new HeadQuarters() { Id = Guid.NewGuid(), Name = "testHQ" });
             var room = await dbContext.Rooms.AddAsync(new Room() { Id = Guid.NewGuid(), Description = "roomTest", HeadQuartersId = hq.Entity.Id, Name = "testRoom" });

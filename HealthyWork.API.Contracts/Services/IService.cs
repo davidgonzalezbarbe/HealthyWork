@@ -18,6 +18,8 @@ namespace HealthyWork.API.Contracts.Services
 
         Task<ResultData<T>> Delete(Guid modelId);
 
+        Task<ResultData<List<T>>> ReadFiltered(T model, bool restricted);
+
     }
 
 }

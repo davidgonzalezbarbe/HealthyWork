@@ -29,5 +29,7 @@ namespace HealthyWork.API.Services.Services
         public async Task<ResultData<List<User>>> ReadAll() => await ReadAllAsync();
 
         public async Task<ResultData<User>> Update(User model) => await UpdateAsync(model, model.Id);
+
+        public async Task<ResultData<List<User>>> ReadFiltered(User model, bool restricted) => await ReadFilteredAsync(model, restricted);
     }
 }

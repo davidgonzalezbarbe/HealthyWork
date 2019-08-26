@@ -87,7 +87,7 @@ namespace HealthyWork.API.Contracts.Models
         Configurations_Found = 260,
         [Description("Rooms was found successfully")]
         Rooms_Found = 261,
-        [Description("Values was found successfully")]
+        [Description("Values were found successfully")]
         Values_Found = 262,
         [Description("Users was found successfully")]
         Users_Found = 263,

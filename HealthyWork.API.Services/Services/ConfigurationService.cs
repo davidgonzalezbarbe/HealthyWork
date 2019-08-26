@@ -28,5 +28,7 @@ namespace HealthyWork.API.Services.Services
         public async Task<ResultData<List<Configuration>>> ReadAll() => await ReadAllAsync();
 
         public async Task<ResultData<Configuration>> Update(Configuration model) => await UpdateAsync(model, model.Id);
+
+        public async Task<ResultData<List<Configuration>>> ReadFiltered(Configuration model, bool restricted) => await ReadFilteredAsync(model, restricted);
     }
 }

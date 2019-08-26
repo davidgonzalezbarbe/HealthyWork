@@ -40,6 +40,7 @@ public class Result
 }
 public enum ResultType
 {
+    None,
     Success,
     Error,
     Exception

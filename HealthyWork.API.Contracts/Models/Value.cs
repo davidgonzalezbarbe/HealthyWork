@@ -26,6 +26,7 @@ namespace HealthyWork.API.Contracts.Models
 
     public enum SensorType
     {
+        None,
         Sonido,
         Luz,
         Temperatura,
@@ -34,6 +35,7 @@ namespace HealthyWork.API.Contracts.Models
 
     public enum PushLevel
     {
+        None,
         Adecuado,
         Sobrepasado,
         Infrapasado

@@ -29,5 +29,7 @@ namespace HealthyWork.API.Services.Services
         public async Task<ResultData<List<TelegramPush>>> ReadAll() => await ReadAllAsync();
 
         public async Task<ResultData<TelegramPush>> Update(TelegramPush model) => await UpdateAsync(model, model.Id);
+
+        public async Task<ResultData<List<TelegramPush>>> ReadFiltered(TelegramPush model, bool restricted) => await ReadFilteredAsync(model, restricted);
     }
 }

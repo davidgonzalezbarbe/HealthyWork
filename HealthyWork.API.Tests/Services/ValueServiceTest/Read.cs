@@ -59,5 +59,23 @@ namespace HealthyWork.API.Tests.Services.ValueServiceTest
             Assert.IsTrue(result.Results[0].Type == ResultType.Error);
             #endregion
         }
+
+        [TestMethod]
+        public async Task ReadFiltered_Ok()
+        {
+            #region Arrange
+            var filter = new Value() {Level = PushLevel.Adecuado, RoomId = new Guid("12B9181A-CEC0-48ED-839D-5EB2A301ED24") };
+            #endregion
+            #region Act
+            var result = await valueService.ReadFiltered(filter, true);
+            #endregion
+            #region Assert
+            Assert.IsNotNull(result.Content);
+            Assert.IsTrue(result.Content.Count > 0);
+            Assert.IsTrue(result.Results[0].Code == ResponseCode.Values_Found.GetCode());
+            Assert.IsTrue(result.Results[0].Description == ResponseCode.Values_Found.GetDescription());
+            Assert.IsTrue(result.Results[0].Type == ResultType.Success);
+            #endregion
+        }
     }
 }
