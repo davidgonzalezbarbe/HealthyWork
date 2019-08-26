@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="HealthyWork.APP_MOBILE.Xamarin_App.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HealthyWork.APP_MOBILE.Xamarin_App.UWP"
+    RequestedTheme="Light">
+
+</Application>
