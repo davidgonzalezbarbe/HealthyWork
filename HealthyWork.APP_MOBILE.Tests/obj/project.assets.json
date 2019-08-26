@@ -263,20 +263,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\": {}
+    "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\HealthyWork.APP_MOBILE.Tests.csproj",
+      "projectUniqueName": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\HealthyWork.APP_MOBILE.Tests.csproj",
       "projectName": "HealthyWork.APP_MOBILE.Tests",
-      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\HealthyWork.APP_MOBILE.Tests.csproj",
-      "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\obj\\",
+      "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\HealthyWork.APP_MOBILE.Tests.csproj",
+      "packagesPath": "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\",
+      "outputPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\dgonzalez.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dgonzalez.barbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -291,11 +291,11 @@
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
-              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
+            "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj": {
+              "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Contracts\\HealthyWork.APP_MOBILE.Contracts.csproj"
             },
-            "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj": {
-              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj"
+            "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj": {
+              "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Services\\HealthyWork.APP_MOBILE.Services.csproj"
             }
           }
         }

@@ -3486,23 +3486,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\": {},
+    "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj",
+      "projectUniqueName": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj",
       "projectName": "HealthyWork.API.Services",
-      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj",
-      "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Services\\obj\\",
+      "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Services\\HealthyWork.API.Services.csproj",
+      "packagesPath": "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\",
+      "outputPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dgonzalez.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dgonzalez.barbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3517,8 +3517,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj": {
-              "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj"
+            "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj": {
+              "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj"
             }
           }
         }

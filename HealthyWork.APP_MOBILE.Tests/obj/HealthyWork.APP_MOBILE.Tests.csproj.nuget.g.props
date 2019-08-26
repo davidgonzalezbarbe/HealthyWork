@@ -3,9 +3,9 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
-    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">C:\Proyectos\HealthyWork\HealthyWork.APP_MOBILE.Tests\obj\project.assets.json</ProjectAssetsFile>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">C:\WS\HealthyWork\HealthyWork\HealthyWork.APP_MOBILE.Tests\obj\project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\dgonzalez.gomez\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\dgonzalez.barbe\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">4.9.3</NuGetToolVersion>
   </PropertyGroup>
@@ -13,7 +13,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgXamarin_UITest Condition=" '$(PkgXamarin_UITest)' == '' ">C:\Users\dgonzalez.gomez\.nuget\packages\xamarin.uitest\2.2.4</PkgXamarin_UITest>
-    <PkgNUnitTestAdapter Condition=" '$(PkgNUnitTestAdapter)' == '' ">C:\Users\dgonzalez.gomez\.nuget\packages\nunittestadapter\2.1.1</PkgNUnitTestAdapter>
+    <PkgXamarin_UITest Condition=" '$(PkgXamarin_UITest)' == '' ">C:\Users\dgonzalez.barbe\.nuget\packages\xamarin.uitest\2.2.4</PkgXamarin_UITest>
+    <PkgNUnitTestAdapter Condition=" '$(PkgNUnitTestAdapter)' == '' ">C:\Users\dgonzalez.barbe\.nuget\packages\nunittestadapter\2.1.1</PkgNUnitTestAdapter>
   </PropertyGroup>
 </Project>

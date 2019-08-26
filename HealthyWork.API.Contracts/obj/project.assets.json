@@ -3615,23 +3615,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\": {},
+    "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj",
+      "projectUniqueName": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj",
       "projectName": "HealthyWork.API.Contracts",
-      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj",
-      "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.API.Contracts\\obj\\",
+      "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Contracts\\HealthyWork.API.Contracts.csproj",
+      "packagesPath": "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\",
+      "outputPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.API.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dgonzalez.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dgonzalez.barbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -504,7 +504,7 @@
   },
   "libraries": {
     "Xamarin.Forms/3.4.0.1008975": {
-      "sha512": "tM9syeev45u92OFENGjq+Zw8WiEwLJFiXe317XpL9SY2RRk9sm2fc1lDVjzwz0da+5ZP5fi24NAPsPQdxBdMwQ==",
+      "sha512": "036/h8HtzRFgTrfhY57IeHoYRsPTO2XTA6uUFdmZzw2QR1sdszfofhI9HrCJTRx6fCzmjPg5Cxk5chYrjKarNw==",
       "type": "package",
       "path": "xamarin.forms/3.4.0.1008975",
       "files": [
@@ -656,20 +656,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\": {}
+    "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\HealthyWork.APP_MOBILE.Xamarin App.iOS.csproj",
+      "projectUniqueName": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\HealthyWork.APP_MOBILE.Xamarin App.iOS.csproj",
       "projectName": "HealthyWork.APP_MOBILE.Xamarin App.iOS",
-      "projectPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\HealthyWork.APP_MOBILE.Xamarin App.iOS.csproj",
-      "packagesPath": "C:\\Users\\dgonzalez.gomez\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\obj\\",
+      "projectPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\HealthyWork.APP_MOBILE.Xamarin App.iOS.csproj",
+      "packagesPath": "C:\\Users\\dgonzalez.barbe\\.nuget\\packages\\",
+      "outputPath": "C:\\WS\\HealthyWork\\HealthyWork\\HealthyWork.APP_MOBILE.Xamarin App\\HealthyWork.APP_MOBILE.Xamarin App.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\dgonzalez.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dgonzalez.barbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
