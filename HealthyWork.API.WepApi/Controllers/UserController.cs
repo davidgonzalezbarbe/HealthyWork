@@ -13,17 +13,19 @@ namespace HealthyWork.API.WebApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IService<User> userService;
+        private readonly IService<User> serviceUserType;
+        private readonly IUserService userService;
 
-        public UserController(IService<User> userService)
+        public UserController(IService<User> serviceUserType, IUserService userService)
         {
+            this.serviceUserType = serviceUserType;
             this.userService = userService;
         }
         // GET: api/User
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var users = await userService.ReadAll();
+            var users = await serviceUserType.ReadAll();
 
             if (users.HasErrors) return BadRequest(users.Results);
             else return Ok(users.Content);
@@ -35,7 +37,7 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var user = await userService.Read(id);
+            var user = await serviceUserType.Read(id);
 
             if (user.HasErrors) return NotFound(user.Results);
             else return Ok(user.Content);
@@ -49,7 +51,7 @@ namespace HealthyWork.API.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 
-                var users = await userService.ReadFiltered(model, restricted);
+                var users = await serviceUserType.ReadFiltered(model, restricted);
 
                 if (users.HasErrors) return NotFound(users.Results);
                 else return Ok(users.Content);
@@ -65,7 +67,7 @@ namespace HealthyWork.API.WebApi.Controllers
             {
                 if (value.Id != Guid.Empty) value.Id = Guid.Empty;
 
-                var result = await userService.Create(value);
+                var result = await serviceUserType.Create(value);
 
                 if (result.HasErrors) return BadRequest(result.Results);
                 else return CreatedAtAction(nameof(Get), value.Id);
@@ -80,7 +82,7 @@ namespace HealthyWork.API.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 if (value.Id != id || id == Guid.Empty) return NotFound();
-                var updated = await userService.Update(value);
+                var updated = await serviceUserType.Update(value);
 
                 if (updated.HasErrors) return BadRequest(updated.Results);
                 else return Ok(updated.Content);
@@ -94,10 +96,38 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await userService.Delete(id);
+            var value = await serviceUserType.Delete(id);
 
             if (value.HasErrors) return BadRequest(value.Results);
             else return Ok(value.Content);
+        }
+
+        [HttpPost]
+        [Route("sendregister")]
+        public async Task<IActionResult> SendRegisterEmail([FromBody]User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var message = userService.EncryptData(model);
+
+                //TODO: mandar por email
+                return Ok();
+            }
+            else return BadRequest();
+        }
+
+        [HttpGet]
+        [Route("confirmregister")]
+        public async Task<IActionResult> ConfirmRegister([FromQuery] string code)
+        {
+            var userData = userService.DecryptData(code);
+            if (!userData.HasErrors)
+            {
+                var result = await serviceUserType.Create(userData.Content);
+                if (result.HasErrors)  return  BadRequest(result.Results);
+                else return CreatedAtAction(nameof(Get), result.Content);
+            }
+            else return BadRequest(userData.Results);
         }
     }
 }

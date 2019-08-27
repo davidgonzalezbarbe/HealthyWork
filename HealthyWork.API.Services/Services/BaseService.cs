@@ -33,7 +33,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception)
             {
-                result.AddResult(ResponseCode.Exception_Create.GetCode(), ResponseCode.Exception_Create.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Create.GetCode(), ResponseCode.Exception_Create.GetDescription(), ResultType.Exception);
             }
             return result;
         }
@@ -58,7 +58,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception)
             {
-                result.AddResult(ResponseCode.Exception_Delete.GetCode(), ResponseCode.Exception_Delete.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Delete.GetCode(), ResponseCode.Exception_Delete.GetDescription(), ResultType.Exception);
             }
             return result;
         }
@@ -79,7 +79,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception)
             {
-                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(), ResultType.Exception);
             }
             return result;
         }
@@ -100,7 +100,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception)
             {
-                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(), ResultType.Exception);
             }
             return result;
         }
@@ -123,7 +123,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception)
             {
-                result.AddResult(ResponseCode.Exception_Update.GetCode(), ResponseCode.Exception_Update.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Update.GetCode(), ResponseCode.Exception_Update.GetDescription(), ResultType.Exception);
             }
             return result;
         }
@@ -184,7 +184,7 @@ namespace HealthyWork.API.Services.Services
             }
             catch (Exception ex)
             {
-                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(MethodBase.GetCurrentMethod().DeclaringType.Name), ResultType.Exception);
+                result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(), ResultType.Exception);
             }
             return result;
         }

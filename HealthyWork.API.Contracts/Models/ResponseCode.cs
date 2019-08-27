@@ -65,6 +65,10 @@ namespace HealthyWork.API.Contracts.Models
         TelegramPush_Deleted = 245,
         #endregion
         #region Others
+        [Description("Object encrypted successfully")]
+        Object_Encrypted = 246,
+        [Description("Object desencrypted successfully")]
+        Object_Desencrypted = 247,
         #endregion
         #endregion
         #region List Success Codes (250-299)
@@ -184,6 +188,12 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Telegram Push could not be deleted")]
         TelegramPush_NotDeleted = 345,
         #endregion
+        #region Others
+        [Description("Object could not be encrypted")]
+        Object_NotEncrypted = 346,
+        [Description("Object could not be desencrypted")]
+        Object_NotDesencrypted = 347,
+        #endregion
         #endregion
         #region List Error Codes(350-399)
         #region Create
@@ -244,14 +254,16 @@ namespace HealthyWork.API.Contracts.Models
         #endregion
         #endregion
         #region Exception Codes (500>)
-        [Description("Exception thrown in Create Method of *place*")]
+        [Description("Exception thrown in Create Method")]
         Exception_Create = 510,
-        [Description("Exception thrown in Read Method of *place*")]
+        [Description("Exception thrown in Read Method")]
         Exception_Read = 511,
-        [Description("Exception thrown in Update Method of *place*")]
+        [Description("Exception thrown in Update Method")]
         Exception_Update = 512,
-        [Description("Exception thrown in Delete Method of *place*")]
-        Exception_Delete = 513
+        [Description("Exception thrown in Delete Method")]
+        Exception_Delete = 513,
+        [Description("Object encrypted successfully")]
+        Object_Encryption = 514,
         #endregion
     }
 
@@ -272,21 +284,6 @@ namespace HealthyWork.API.Contracts.Models
                 }
             }
             return response.ToString();
-        }
-
-        public static string GetDescription(this ResponseCode response, string place)
-        {
-            Type genericEnumType = response.GetType();
-            MemberInfo[] memberInfo = genericEnumType.GetMember(response.ToString());
-            if ((memberInfo != null && memberInfo.Length > 0))
-            {
-                var _Attribs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if ((_Attribs != null && _Attribs.Count() > 0))
-                {
-                    return ((DescriptionAttribute)_Attribs.ElementAt(0)).Description;
-                }
-            }
-            return response.ToString().Replace("*place*",place);
         }
 
     }
