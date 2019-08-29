@@ -98,7 +98,7 @@ namespace HealthyWork.API.Services.Services
             {
                 result.AddResult(GetResponseCode(typeof(T).Name + "s_NotFound").GetCode(), GetResponseCode(typeof(T).Name + "s_NotFound").GetDescription(), ResultType.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result.AddResult(ResponseCode.Exception_Read.GetCode(), ResponseCode.Exception_Read.GetDescription(), ResultType.Exception);
             }

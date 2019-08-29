@@ -32,13 +32,14 @@ namespace HealthyWork
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<HealthyDbContext>();
+            services.AddDbContext<HealthyDbContext>(optionsLifetime: ServiceLifetime.Singleton);
             services.AddTransient<IService<Value>, ValueService>();
             services.AddTransient<IService<Room>, RoomService>();
             services.AddTransient<IService<User>, UserService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IService<HeadQuarters>, HeadQuartersService>();
             services.AddTransient<IService<TelegramPush>, TelegramPushService>();
+            services.AddTransient<ITelegramBotService, TelegramBotService>();
             services.AddTransient<IService<Configuration>, ConfigurationService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

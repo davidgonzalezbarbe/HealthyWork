@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HealthyWork.API.Contracts.Models;
+﻿using HealthyWork.API.Contracts.Models;
 using HealthyWork.API.Contracts.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace HealthyWork.API.WebApi.Controllers
 {
@@ -13,45 +10,46 @@ namespace HealthyWork.API.WebApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IService<User> serviceUserType;
-        private readonly IUserService userService;
+        private readonly IService<User> userService;
+        private readonly IUserService loginService;
 
-        public UserController(IService<User> serviceUserType, IUserService userService)
+        public UserController(IService<User> userService, IUserService loginService)
         {
-            this.serviceUserType = serviceUserType;
             this.userService = userService;
+            this.loginService = loginService;
         }
         // GET: api/User
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var users = await serviceUserType.ReadAll();
+            var users = await userService.ReadAll();
 
             if (users.HasErrors) return BadRequest(users.Results);
             else return Ok(users.Content);
         }
 
         // GET: api/User/5
-        [HttpGet()]
+        [HttpGet]
+        [Route("{id}")]
         public async Task<IActionResult> Get([FromRoute]Guid id)
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var user = await serviceUserType.Read(id);
+            var user = await userService.Read(id);
 
             if (user.HasErrors) return NotFound(user.Results);
             else return Ok(user.Content);
         }
-        
+
         // GET: api/User/Search
+        [HttpGet]
         [Route("search")]
-        [HttpGet()]
-        public async Task<IActionResult> Get([FromBody] User model, [FromQuery]bool restricted = true)
+        public async Task<IActionResult> GetFiltered([FromBody] User model, [FromQuery]bool restricted = true)
         {
             if (ModelState.IsValid)
             {
-                
-                var users = await serviceUserType.ReadFiltered(model, restricted);
+
+                var users = await userService.ReadFiltered(model, restricted);
 
                 if (users.HasErrors) return NotFound(users.Results);
                 else return Ok(users.Content);
@@ -61,16 +59,18 @@ namespace HealthyWork.API.WebApi.Controllers
 
         // POST: api/User
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] User value)
+        [Route("create")]
+        public async Task<IActionResult> Create([FromBody] User value)
         {
             if (ModelState.IsValid)
             {
                 if (value.Id != Guid.Empty) value.Id = Guid.Empty;
-
-                var result = await serviceUserType.Create(value);
+                var checkIfExists = await userService.ReadFiltered(new User() { Email = value.Email }, false);
+                if (!checkIfExists.HasErrors) return BadRequest("The user has already been created");
+                var result = await userService.Create(value);
 
                 if (result.HasErrors) return BadRequest(result.Results);
-                else return CreatedAtAction(nameof(Get), value.Id);
+                else return CreatedAtAction(nameof(Get), value);
             }
             else return BadRequest();
         }
@@ -82,7 +82,7 @@ namespace HealthyWork.API.WebApi.Controllers
             if (ModelState.IsValid)
             {
                 if (value.Id != id || id == Guid.Empty) return NotFound();
-                var updated = await serviceUserType.Update(value);
+                var updated = await userService.Update(value);
 
                 if (updated.HasErrors) return BadRequest(updated.Results);
                 else return Ok(updated.Content);
@@ -96,7 +96,7 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (id == Guid.Empty) return BadRequest();
 
-            var value = await serviceUserType.Delete(id);
+            var value = await userService.Delete(id);
 
             if (value.HasErrors) return BadRequest(value.Results);
             else return Ok(value.Content);
@@ -108,26 +108,49 @@ namespace HealthyWork.API.WebApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var message = userService.EncryptData(model);
+                model.IsActive = false;
 
-                //TODO: mandar por email
-                return Ok();
+                var result = await userService.Create(model);
+
+                if (result.HasErrors) return BadRequest();
+                else
+                {
+                    //TODO: mandar por email
+                    return Ok(result.Content);
+                }
             }
             else return BadRequest();
         }
 
         [HttpGet]
-        [Route("confirmregister")]
-        public async Task<IActionResult> ConfirmRegister([FromQuery] string code)
+        [Route("register")]
+        public async Task<IActionResult> ConfirmRegister([FromQuery] Guid id)
         {
-            var userData = userService.DecryptData(code);
+            var userData = await userService.Read(id);
+
             if (!userData.HasErrors)
             {
-                var result = await serviceUserType.Create(userData.Content);
-                if (result.HasErrors)  return  BadRequest(result.Results);
-                else return CreatedAtAction(nameof(Get), result.Content);
+                userData.Content.IsActive = true;
+                var result = await userService.Update(userData.Content);
+                if (!result.HasErrors) return Ok(userData.Content);
+                else return BadRequest();
             }
-            else return BadRequest(userData.Results);
+            else return NotFound();
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public  IActionResult Login([FromBody]User model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var userLogged = loginService.Login(model);
+                if (userLogged.HasErrors) return BadRequest(userLogged.Results);
+                else return Ok(userLogged.Content);
+                
+            }
+            else return BadRequest();
         }
     }
 }

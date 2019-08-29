@@ -18,7 +18,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("value was created successfully")]
         Value_Created = 213,
         [Description("HeadQuarters was created successfully")]
-        HQ_Created = 214,
+        HeadQuarters_Created = 214,
         [Description("Telegram Push was created successfully")]
         TelegramPush_Created = 215,
         #endregion
@@ -32,7 +32,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User was found successfully")]
         User_Found = 223,
         [Description("HeadQuarters was found successfully")]
-        HQ_Found = 224,
+        HeadQuarters_Found = 224,
         [Description("Telegram Push was found successfully")]
         TelegramPush_Found = 225,
         #endregion
@@ -46,7 +46,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User was updated successfully")]
         User_Updated = 233,
         [Description("HeadQuarters was updated successfully")]
-        HQ_Updated = 234,
+        HeadQuarters_Updated = 234,
         [Description("Telegram Push was updated successfully")]
         TelegramPush_Updated = 235,
         #endregion
@@ -60,7 +60,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User was deleted successfully")]
         User_Deleted = 243,
         [Description("HeadQuarters was deleted successfully")]
-        HQ_Deleted = 244,
+        HeadQuarters_Deleted = 244,
         [Description("Telegram Push was deleted successfully")]
         TelegramPush_Deleted = 245,
         #endregion
@@ -82,7 +82,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("values was created successfully")]
         Values_Created = 253,
         [Description("HeadQuarters was created successfully")]
-        HQs_Created = 254,
+        HeadQuarterss_Created = 254,
         [Description("Telegram Pushes was created successfully")]
         TelegramPushes_Created = 255,
         #endregion
@@ -96,7 +96,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users was found successfully")]
         Users_Found = 263,
         [Description("HeadQuarters was found successfully")]
-        HQs_Found = 264,
+        HeadQuarterss_Found = 264,
         [Description("Telegram Pushes was found successfully")]
         TelegramPushes_Found = 265,
         #endregion
@@ -110,7 +110,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users was updated successfully")]
         Users_Updated = 273,
         [Description("HeadQuarters was updated successfully")]
-        HQs_Updated = 274,
+        HeadQuarterss_Updated = 274,
         [Description("Telegram Pushes was updated successfully")]
         TelegramPushes_Updated = 275,
         #endregion
@@ -124,7 +124,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users was deleted successfully")]
         Users_Deleted = 283,
         [Description("HeadQuarters was deleted successfully")]
-        HQs_Deleted = 284,
+        HeadQuarterss_Deleted = 284,
         [Description("Telegram Pushes was deleted successfully")]
         TelegramPushes_Deleted = 285,
         #endregion
@@ -142,7 +142,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Value could not be created")]
         Value_NotCreated = 313,
         [Description("HeadQuarters could not be created")]
-        HQ_NotCreated = 314,
+        HeadQuarters_NotCreated = 314,
         [Description("Telegram Push could not be created")]
         TelegramPush_NotCreated = 315,
         #endregion
@@ -156,7 +156,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User could not be found")]
         User_NotFound = 323,
         [Description("HeadQuarters could not be found")]
-        HQ_NotFound = 324,
+        HeadQuarters_NotFound = 324,
         [Description("Telegram Push could not be found")]
         TelegramPush_NotFound = 325,
         #endregion
@@ -170,7 +170,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User could not be updated")]
         User_NotUpdated = 333,
         [Description("HeadQuarters could not be updated")]
-        HQ_NotUpdated = 334,
+        HeadQuarters_NotUpdated = 334,
         [Description("Telegram Push could not be updated")]
         TelegramPush_NotUpdated = 335,
         #endregion
@@ -184,7 +184,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("User could not be deleted")]
         User_NotDeleted = 343,
         [Description("HeadQuarters could not be deleted")]
-        HQ_NotDeleted = 344,
+        HeadQuarters_NotDeleted = 344,
         [Description("Telegram Push could not be deleted")]
         TelegramPush_NotDeleted = 345,
         #endregion
@@ -206,7 +206,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Values could not be created")]
         Values_NotCreated = 353,
         [Description("HeadQuarters could not be created")]
-        HQs_NotCreated = 354,
+        HeadQuarterss_NotCreated = 354,
         [Description("Telegram Pushes could not be created")]
         TelegramPushes_NotCreated = 355,
         #endregion
@@ -220,7 +220,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users could not be found")]
         Users_NotFound = 363,
         [Description("HeadQuarters could not be found")]
-        HQs_NotFound = 364,
+        HeadQuarterss_NotFound = 364,
         [Description("Telegram Pushes could not be found")]
         TelegramPushes_NotFound = 365,
         #endregion
@@ -234,7 +234,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users could not be updated")]
         Users_NotUpdated = 373,
         [Description("HeadQuarters could not be updated")]
-        HQs_NotUpdated = 374,
+        HeadQuarterss_NotUpdated = 374,
         [Description("Telegram Pushes could not be updated")]
         TelegramPushes_NotUpdated = 375,
         #endregion
@@ -248,7 +248,7 @@ namespace HealthyWork.API.Contracts.Models
         [Description("Users could not be deleted")]
         Users_NotDeleted = 383,
         [Description("HeadQuarters could not be deleted")]
-        HQs_NotDeleted = 384,
+        HeadQuarterss_NotDeleted = 384,
         [Description("Telegram Pushes could not be deleted")]
         TelegramPushes_NotDeleted = 385,
         #endregion
