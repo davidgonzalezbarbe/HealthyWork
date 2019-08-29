@@ -22,6 +22,7 @@ namespace HealthyWork.API.WebApi.Controllers
 
         // GET: api/Value
         [HttpGet]
+        [Route("all")]
         public async Task<IActionResult> Get()
         {
             var values = await valueService.ReadAll();

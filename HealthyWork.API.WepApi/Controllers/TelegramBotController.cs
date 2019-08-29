@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HealthyWork.API.Contracts.Models;
 using HealthyWork.API.Contracts.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,5 +34,18 @@ namespace HealthyWork.API.WebApi.Controllers
             botService.Stop();
             return Ok();
         }
+
+        [HttpPost]
+        [Route("send")]
+        public IActionResult Send([FromBody]Value value)
+        {
+            if (ModelState.IsValid)
+            {
+                botService.Send(value);
+                return Ok();
+            }
+            else return BadRequest();
+        }
+
     }
 }
